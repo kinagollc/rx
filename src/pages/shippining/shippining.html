@@ -1,0 +1,107 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon class="menu-icon"><img src="assets/imgs/ic_menu.png"></ion-icon>
+		</button>
+		<ion-title>{{"confirm_order" | translate}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+	<div class="address-section">
+		<ion-row text-center class="status">
+			<ion-col class="complate">
+				<ion-icon class="zmdi zmdi-check-circle"></ion-icon>
+				<span>{{"login" | translate}}</span>
+			</ion-col>
+			<ion-col class="processing">
+				<ion-icon class="zmdi zmdi-circle-o"></ion-icon>
+				<span>{{"shipping" | translate}}</span>
+			</ion-col>
+			<ion-col class="">
+				<ion-icon class="zmdi zmdi-circle"></ion-icon>
+				<span>{{"payment" | translate}}</span>
+			</ion-col>
+		</ion-row>
+		<ion-card>
+			<ion-card-header>
+				<p class="d-flex">
+					{{"your_dlvr_address" | translate}}
+					<span class="text-sky end" (click)="addressPage()">{{addressChangeText | translate}}
+						<ion-icon name="ios-arrow-forward" class="icon" text-end></ion-icon>
+					</span>
+				</p>
+			</ion-card-header>
+			<ion-item *ngIf="selectedAddress">
+				<ion-label>
+					<div class="img_box">
+						<img *ngIf="selectedAddress.type == 1" src="assets/imgs/ic_home_active.png">
+						<img *ngIf="selectedAddress.type == 1" src="assets/imgs/ic_home_active.png">
+						<h3 *ngIf="selectedAddress.type == 1">{{"address_type_home" | translate}}</h3>
+						<img *ngIf="selectedAddress.type == 2" src="assets/imgs/ic_office_active.png">
+						<img *ngIf="selectedAddress.type == 2" src="assets/imgs/ic_office_active.png">
+						<h3 *ngIf="selectedAddress.type == 2">{{"address_type_office" | translate}}</h3>
+						<img *ngIf="selectedAddress.type == 3" src="assets/imgs/ic_location_active.png">
+						<img *ngIf="selectedAddress.type == 3" src="assets/imgs/ic_location_active.png">
+						<h3 *ngIf="selectedAddress.type == 3">{{"address_type_other" | translate}}</h3>
+					</div>
+					<p>{{selectedAddress.address_1}}</p>
+				</ion-label>
+				<!-- <ion-radio value="{{address.id}}"></ion-radio> -->
+			</ion-item>
+		</ion-card>
+	</div>
+
+	<div class="your-items" *ngIf="cartItems && cartItems.length">
+		<ion-card>
+			<ion-card-header>
+				<p>{{"your_items" | translate}}</p>
+			</ion-card-header>
+			<ion-card-content *ngFor="let item of cartItems">
+				<ion-row>
+					<ion-col col-3>
+						<div *ngIf="item.product.images && item.product.images.length" class="img-box">
+							<img data-src="{{item.product.images[0].src}}">
+						</div>
+						<div *ngIf="!item.product.images || !item.product.images.length" class="img-box">
+							<img src="assets/imgs/suit_PNG8132.png">
+						</div>
+					</ion-col>
+
+					<ion-col col-9>
+						<h4 class="d-flex">{{item.product.name}}
+							<ion-icon text-end name="md-trash" class="icon end" (click)="removeItem(item.product)">
+							</ion-icon>
+						</h4>
+						<div class="rate d-flex">
+							<p text-right class="end add_remove d-flex">
+								<!-- <small>{{'quantity' | translate}}</small> -->
+								<span class="end">
+									<span class="add_remove_btn" (click)="decrementItem(item.product)">-</span>
+									<strong>{{item.quantity}}</strong>
+									<span class="add_remove_btn" (click)="incrementItem(item.product)"
+										style="position: relative; top: 2px; ">+</span>
+								</span>
+							</p>
+						</div>
+					</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+	</div>
+	<div class="spacebar-bottom"></div>
+</ion-content>
+<ion-footer no-border>
+	<div class="receipt btn-fisx-bottom">
+		<ion-card>
+			<ion-card-header>
+			</ion-card-header>
+			<ion-card-content>
+				<button ion-button full class="bg-thime btn-round green-shadow btn-text" text-uppercase
+					(click)="paymentPage()">
+					{{"continue" | translate}}
+				</button>
+			</ion-card-content>
+		</ion-card>
+	</div>
+</ion-footer>

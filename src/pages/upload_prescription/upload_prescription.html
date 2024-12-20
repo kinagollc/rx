@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			{{"uploaded" |translate}}
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div class="container" text-center>
+		<div class="img_box">
+			<ion-icon class="zmdi zmdi-assignment-check"></ion-icon>
+		</div>
+		<h1> {{"prescription_uploaded" |translate}}</h1>
+		<p>{{"your_precription_has_been" |translate}} <br>{{"uploaded_we_ll_get_back" |translate}}
+			<br>{{"to_you_shortly" |translate}}</p>
+	</div>
+</ion-content>
+
+<ion-footer no-border>
+	<button ion-button full class="bg-thime btn-round green-shadow btn-text" (click)="home()">
+		{{"home" | translate}}
+	</button>
+</ion-footer>

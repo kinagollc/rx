@@ -1,0 +1,273 @@
+<ion-header class="bg-thime">
+	<ion-navbar>
+		<ion-title>{{product.categories[0].name}}
+			<div class="icon-box">
+				<ion-icon class="icon" (click)="cartPage()">
+					<img src="assets/imgs/ic_my_cart.png" width="100%;">
+					<ion-badge>{{cartTotal}}</ion-badge>
+				</ion-icon>
+			</div>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light" padding-bottom>
+	<!--<select size & color>-->
+	<div class="img-section shadow-bottom" text-center *ngIf="product">
+		<img *ngIf="imageToDisplay" data-src="{{imageToDisplay}}" #myImage />
+		<img *ngIf="!imageToDisplay" src="assets/imgs/logo.png">
+
+		<div class="tab-btn-box" *ngIf="product.images && product.images.length">
+			<div class="tab-btn">
+				<img data-src="{{product.images[0].src}}" (click)="showImage(product.images[0].src)">
+			</div>
+			<div *ngIf="product.images.length > 1" class="tab-btn">
+				<img data-src="{{product.images[1].src}}" (click)="showImage(product.images[1].src)">
+			</div>
+			<div *ngIf="product.images.length > 2" class="tab-btn">
+				<img data-src="{{product.images[2].src}}" (click)="showImage(product.images[2].src)">
+			</div>
+			<!-- <div *ngIf="product.images.length > 3" class="tab-btn">
+        <img data-src="{{product.images[3].src}}" (click)="showImage(product.images[3].src)">
+      </div> -->
+		</div>
+
+		<div class="item_details">
+			<h2><b>{{product.name}}</b></h2>
+			<h3 class="d-flex">
+				<span class="icon end">
+					<ion-icon *ngIf="product.favorite" name="md-heart" class="text-sky icon"
+						(click)="toggleFavorite(product)"></ion-icon>
+					<ion-icon *ngIf="!product.favorite" name="md-heart-outline" class="text-light icon"
+						(click)="toggleFavorite(product)"></ion-icon>
+				</span>
+			</h3>
+		</div>
+	</div>
+	<!--<select size & color end>-->
+
+	<!--    <Product Info>-->
+	<div class="info bg-white shadow-bottom" padding>
+		<h6 class="heading"><i>{{'description' | translate}}</i></h6>
+		<div *ngIf="!details" [innerHTML]="product.short_description">
+			<span text-right class="text-sky" (click)="viewMore()">{{'view' | translate}}</span>
+		</div>
+		<div *ngIf="details" [innerHTML]="product.description">
+			<span text-right class="text-sky" (click)="viewLess()">{{'view_less' | translate}}</span>
+		</div>
+		<span *ngIf="!details" text-right class="text-sky" (click)="viewMore()">{{'view' | translate}}
+			<ion-icon name="ios-arrow-forward-outline"></ion-icon>
+		</span>
+		<span class="text-sky more_less" *ngIf="details" text-right (click)="viewLess()">{{'view_less' | translate}}
+			<ion-icon name="ios-arrow-forward-outline"></ion-icon>
+		</span>
+	</div>
+	<!--  <Product Info end>-->
+
+	<!-- Variations start -->
+	<div *ngIf="productVariations && productVariations.length" class="your-items">
+		<ion-card-header>
+			<p no-margin> {{'product_versions' | translate}}</p>
+		</ion-card-header>
+		<ion-card-content *ngFor="let item of productVariations">
+			<ion-row>
+				<ion-col col-3>
+					<div *ngIf="item.images && item.images.length" class="img-box">
+						<img data-src="{{item.images[0].src}}">
+					</div>
+					<div *ngIf="!item.images || !item.images.length" class="img-box">
+						<img src="assets/imgs/suit_PNG8132.png">
+					</div>
+				</ion-col>
+				<ion-col col-9>
+					<h4>{{item.name}}</h4>
+					<div class="rate">
+						<div style="display: flex;" class="price-box">
+							<div *ngIf="item.regular_price != item.sale_price" class="price text-light" padding-right
+								[innerHTML]="item.regular_price_html">
+							</div>
+							<div class="price text-sky" [innerHTML]="item.sale_price_html">
+							</div>
+						</div>
+						<p text-right class="card-bottom text-black">
+							<button ion-button class="small button btn-round bg-green" text-right
+								(click)="buyVariation(item)">{{'buy' | translate}}</button>
+						</p>
+					</div>
+					<p class="card-bottom">
+						<button ion-button class="small button btn-round" text-right (click)="addVariation(item)">
+							{{'add_cart' | translate}}
+						</button>
+					</p>
+				</ion-col>
+			</ion-row>
+		</ion-card-content>
+	</div>
+	<!-- Variations end -->
+	
+	
+<!--
+	
+	<div class="distributor d-flex" (click)="vendor_profile()">
+		<div class="img_box">
+			<img src="https://cdn.pixabay.com/photo/2016/10/14/19/21/canyon-1740973__340.jpg">
+		</div>
+		<div class="text_box">
+			<h2 class="d-flex">
+				<span class="title">Johnson distributor </span>
+				 <ion-icon name="ios-arrow-forward" class="end"></ion-icon>
+			</h2>
+			<p>	{{'view_seller_profile' | translate}}</p>
+		</div>
+	</div>
+	
+-->
+	
+
+	<!--    <check Delivery>-->
+	<!-- <div class="pincod bg-white shadow-bottom" padding>
+      <h6 class="heading">Check Delivery</h6>
+      <ion-row>
+          <ion-col col-8>
+              <ion-list>
+                  <ion-item>
+                      <ion-input type="text" placeholder="Enter your pin"></ion-input>
+                  </ion-item>
+              </ion-list>
+          </ion-col>
+          <ion-col col-4>
+              <button ion-button full class="bg-thime btn-round btn-text">Submit</button>
+          </ion-col>
+      </ion-row>
+      <p>
+          <span>Cash on Delivery</span>
+          <span text-center>Free Sheeping</span>
+          <span text-right>Delivery in 3-6 Days</span>
+      </p>
+  </div> -->
+	<!--    <check Delivery end>-->
+
+	<!--    <reating & review>-->
+	<div class="reating-review bg-white" padding *ngIf="reviews && reviews.length">
+		<!-- <div class="reating">
+      <div class="rated">
+        <ion-badge class="badges bg-green text-white">
+          4.2
+          <ion-icon name="md-star"></ion-icon>
+        </ion-badge>
+        <p class="text-light">
+          <span text-center>
+            Rated by<br>125 poeple
+          </span>
+        </p>
+      </div>
+      <div class="reating-box">
+        <div class="rating">
+          <div class="text-1">5
+            <ion-icon name="md-star"></ion-icon>
+          </div>
+          <div class="progres-bar rate-5"><span style="width: 90%"></span></div>
+          <div class="text-2">88
+            <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="rating">
+          <div class="text-1">4
+            <ion-icon name="md-star"></ion-icon>
+          </div>
+          <div class="progres-bar rate-4"><span style="width: 70%"></span></div>
+          <div class="text-2">88
+            <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="rating">
+          <div class="text-1">3
+            <ion-icon name="md-star"></ion-icon>
+          </div>
+          <div class="progres-bar rate-3"><span style="width: 50%"></span></div>
+          <div class="text-2">88
+            <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="rating">
+          <div class="text-1">2
+            <ion-icon name="md-star"></ion-icon>
+          </div>
+          <div class="progres-bar rate-2"><span style="width: 35%"></span></div>
+          <div class="text-2">88
+            <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="rating">
+          <div class="text-1">1
+            <ion-icon name="md-star"></ion-icon>
+          </div>
+          <div class="progres-bar rate-1"><span style="width: 20%"></span></div>
+          <div class="text-2">88
+            <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div> -->
+		<div class="btn review text-sky" (click)="reviewPage()">{{"write_own_review" | translate}}</div>
+		<div class="lick">
+			<div *ngFor="let review of reviews">
+				<p padding-top>
+					<span class="left-side">
+						<ion-badge class="badges bg-green text-white">{{review.rating}}
+							<ion-icon name="md-star"></ion-icon>
+						</ion-badge>
+						<span class="bold">{{review.name}}</span>
+					</span>
+					<span class="right-side">
+						<span class="text-light">{{review.date_created}}</span>
+					</span>
+				</p>
+				<h5> {{review.review}} </h5>
+				<!-- <p class="border-bottom  name-like" padding-bottom>
+          <span class="left-side">
+             Davis Williamson.
+          </span>
+          <span class="right-side icon-box">                    
+            <ion-icon name="md-thumbs-up" text-right class="icon-lick"></ion-icon><small>2</small>
+            <ion-icon name="md-thumbs-down" text-right class="icon-lick"></ion-icon><small>2</small>             
+          </span>
+        </p> -->
+			</div>
+			<h4 class="text-sky" text-end>
+				{{"read_reviews" | translate}}
+				<ion-icon name="ios-arrow-forward-outline"></ion-icon>
+			</h4>
+		</div>
+	</div>
+	<!--    <reating & review end>-->
+
+	<!-- <div style="height: 65px;" *ngIf="product && product.type=='simple'"></div>
+  <div class="receipt btn-fisx-bottom" *ngIf="product && product.type=='simple'">
+    <ion-row>
+      <ion-col>
+        <button ion-button full class="btn-round green-shadow btn-text text-sky" style="background: #fff;" (click)="addToCart()">{{'add_cart' | translate}}</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full class="bg-thime btn-round green-shadow btn-text" (click)="buyNow()">{{'buy' | translate}}</button>
+      </ion-col>
+    </ion-row>
+  </div> -->
+
+	<!--    <reating & review end>-->
+	<div style="display: block;margin-bottom:35px" padding-bottom margin-bottom></div>
+</ion-content>
+<ion-footer *ngIf="product && product.type=='simple'" no-border>
+	<ion-row>
+		<ion-col>
+			<button ion-button full class="btn-round green-shadow btn-text text-sky" style="background: #fff;"
+				(click)="addToCart()">
+				{{'add_cart' | translate}}</button>
+		</ion-col>
+		<ion-col>
+			<button ion-button full class="bg-thime btn-round green-shadow btn-text" (click)="buyNow()">
+				{{'buy' | translate}}
+			</button>
+		</ion-col>
+	</ion-row>
+</ion-footer>

@@ -1,0 +1,42 @@
+page-upload {
+    .bg-light {
+        background: rgba(0, 0, 0, 0.7) !important;
+    }
+    .close-icon {
+        position: absolute;
+        top: 0px;
+        z-index: 1;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        color:$white-color;
+        right: 0;
+        text-align: center;
+    }
+    ion-card-title {
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        opacity: .7 !important;
+    }
+
+    .scroll-content {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        contain: strict;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .card {
+        margin-top: auto;
+        margin-bottom: auto;
+        position: relative;
+    }
+}
+
+.modal-wrapper {
+    box-shadow: none !important;
+}

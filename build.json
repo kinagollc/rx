@@ -1,0 +1,18 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "./rxcustomer.jks",
+            "storePassword": "theman",
+            "alias": "rxcustomer",
+            "password" : "theman",
+            "keystoreType": "jks"
+        },
+        "release": {
+            "keystore": "./rxcustomer.jks",
+            "storePassword": "theman",
+            "alias": "rxcustomer",
+            "password" : "theman",
+            "keystoreType": "jks"
+        }
+    }
+}

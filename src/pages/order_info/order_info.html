@@ -1,0 +1,58 @@
+<ion-header class="bg-transparent">
+	<ion-navbar>
+		<ion-title>
+			{{'order_info' | translate}}
+		</ion-title>
+	</ion-navbar>
+	<div class="order_info">
+		<ion-list no-lines>
+			<ion-item>
+				<h2 class="d-flex">{{"order_id" | translate}} - {{order.id}}
+					<span class="end">{{order.status | translate}}</span>
+				</h2>
+				<ion-row>
+					<ion-col col-3>
+						<h4>{{"ordered_on" | translate}}</h4>
+						<h3>{{order.date_created}}</h3>
+					</ion-col>
+				</ion-row>
+			</ion-item>
+		</ion-list>
+
+		<div class="order_status">
+			<ion-row>
+				<ion-col [ngClass]="(orderLevel>=1)? 'complate' : ''" col-4 text-center>
+					<div class="img_box">
+						<img *ngIf="!(orderLevel>=1)" src="assets/imgs/ic_confirmedoff.png" class="before">
+						<img *ngIf="orderLevel>=1" src="assets/imgs/ic_confirmed.png" class="after">
+					</div>
+					<h3>{{"confirmed" | translate}}</h3>
+				</ion-col>
+				<ion-col [ngClass]="(orderLevel>=2)? 'complate' : ''" col-4 text-center>
+					<div class="img_box">
+						<img *ngIf="!(orderLevel>=2)" src="assets/imgs/ic_dipatchedoff.png" class="before">
+						<img *ngIf="orderLevel>=2" src="assets/imgs/ic_dipatched.png" class="after">
+					</div>
+					<h3>{{"dispatched" | translate}}</h3>
+				</ion-col>
+				<ion-col [ngClass]="(orderLevel>=3)? 'complate' : ''" col-4 text-center>
+					<div class="img_box">
+						<img *ngIf="!(orderLevel>=3)" src="assets/imgs/ic_deliveredoff.png" class="before">
+						<img *ngIf="orderLevel>=3" src="assets/imgs/ic_delivered.png" class="after">
+					</div>
+					<h3>{{"delivered" | translate}}</h3>
+				</ion-col>
+			</ion-row>
+		</div>
+	</div>
+</ion-header>
+
+<ion-content class="bg-light">
+	<ion-list no-lines class="items_ordered">
+		<h1>{{"items_ordered" | translate}}</h1>
+		<ion-item *ngFor="let item of order.line_items">
+			<h2 item-start class="item_quantity"><span text-start>{{item.quantity}}</span>x</h2>
+			<h2 class="item_name">{{item.name}}</h2>
+		</ion-item>
+	</ion-list>
+</ion-content>

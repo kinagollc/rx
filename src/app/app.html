@@ -1,0 +1,172 @@
+<ion-menu *ngIf="rtlSide == 'left'" side="left" [content]="content">
+	<ion-header>
+		<ion-toolbar>
+			<ion-list>
+				<ion-item menuClose (click)="loginIfNot()">
+					<ion-avatar item-start>
+						<img *ngIf="user && user.avatar_url && user.avatar_url.length" [src]="user.avatar_url">
+						<img *ngIf="!(user && user.avatar_url && user.avatar_url.length)" src="assets/imgs/logo.png">
+					</ion-avatar>
+					<h2 *ngIf="user">{{'hey' | translate}} {{user.first_name}}
+						<!-- <ion-icon name="ios-arrow-forward"></ion-icon> -->
+					</h2>
+					<h2 *ngIf="!user">{{'hey' | translate}} {{'guest' | translate}}
+						<!-- <ion-icon name="ios-arrow-forward"></ion-icon> -->
+					</h2>
+				</ion-item>
+			</ion-list>
+		</ion-toolbar>
+		<div *ngIf="user" class="menu-tabs" text-center>
+			<ion-row>
+				<ion-col menuClose (click)="actionNavHeader(1)">
+					<img src="assets/imgs/ic_my profile.png">
+					<p>{{'profile' | translate}}</p>
+				</ion-col>
+				<ion-col menuClose (click)="actionNavHeader(2)">
+					<img src="assets/imgs/ic_my_addresses-2.png">
+					<p>{{'my_address' | translate}}</p>
+				</ion-col>
+			</ion-row>
+		</div>
+	</ion-header>
+
+	<ion-content>
+		<div class="menu-title">
+			<ion-list>
+				<button ion-item menuClose (click)="homePage()">
+					<img src="assets/imgs/ic_home.png">
+					{{'home' | translate}}
+				</button>
+				<button ion-item menuClose (click)="categoryPage()">
+					<img src="assets/imgs/ic_categories.png">
+					{{'categories' | translate}}
+				</button>
+				<button *ngIf="user" ion-item menuClose (click)="myOrders()">
+					<img src="assets/imgs/ic_my_orders-2.png">
+					{{'my_orders' | translate}}
+				</button>
+				<button ion-item menuClose (click)="wishlistPage()">
+					<img src="assets/imgs/fav.png">
+					{{'my_wishes' | translate}}
+				</button>
+				<button ion-item menuClose (click)="helpPage('faq')">
+					<img src="assets/imgs/ic_help.png">
+					{{'faq' | translate}}
+				</button>
+				<button ion-item menuClose (click)="helpPage('terms')">
+					<img src="assets/imgs/ic_about.png">
+					{{'about' | translate}}
+				</button>
+				<button ion-item menuClose (click)="chatUs()">
+					<img src="assets/imgs/ic_message.png ">
+					{{'contact_us' | translate}}
+				</button>
+				<button ion-item menuClose (click)="manageLanguage()">
+					<img src="assets/imgs/ic_menu_color.png">
+					{{'change_language' | translate}}
+				</button>
+				<button ion-item menuClose (click)="phonenumberPage()">
+					<img src="assets/imgs/ic_logout.png">
+					<span *ngIf="user">{{'logout' |translate}}</span>
+					<span *ngIf="!user">{{'login' |translate}}</span>
+				</button>
+			</ion-list>
+		</div>
+	</ion-content>
+	<ion-footer *ngIf="config.demoMode">
+		<ion-item menuClose (click)="developedBy()" no-lines>
+			<div class="div-logo">
+				<h4 class="text-white-dev">{{'developed_by' | translate}}</h4>
+				<img class="img-logo" src="assets/imgs/VT_black_logo.png" alt="">
+			</div>
+		</ion-item>
+	  </ion-footer>
+</ion-menu>
+
+<ion-menu *ngIf="rtlSide == 'right'" side="right" [content]="content">
+	<ion-header>
+		<ion-toolbar>
+			<ion-list>
+				<ion-item menuClose (click)="loginIfNot()">
+					<ion-avatar item-start>
+						<img *ngIf="user && user.avatar_url && user.avatar_url.length" [src]="user.avatar_url">
+						<img *ngIf="!(user && user.avatar_url && user.avatar_url.length)" src="assets/imgs/logo.png">
+					</ion-avatar>
+					<h2 *ngIf="user">{{'hey' | translate}} {{user.first_name}}
+						<!-- <ion-icon name="ios-arrow-forward"></ion-icon> -->
+					</h2>
+					<h2 *ngIf="!user">{{'hey' | translate}} {{'guest' | translate}}
+						<!-- <ion-icon name="ios-arrow-forward"></ion-icon> -->
+					</h2>
+				</ion-item>
+			</ion-list>
+		</ion-toolbar>
+		<div *ngIf="user" class="menu-tabs" text-center>
+			<ion-row>
+				<ion-col menuClose (click)="actionNavHeader(1)">
+					<img src="assets/imgs/ic_my profile.png">
+					<p>{{'profile' | translate}}</p>
+				</ion-col>
+				<ion-col menuClose (click)="actionNavHeader(2)">
+					<img src="assets/imgs/ic_my_addresses-2.png">
+					<p>{{'my_address' | translate}}</p>
+				</ion-col>
+			</ion-row>
+		</div>
+	</ion-header>
+
+	<ion-content>
+		<div class="menu-title">
+			<ion-list>
+				<button ion-item menuClose (click)="homePage()">
+					<img src="assets/imgs/ic_home.png">
+					{{'home' | translate}}
+				</button>
+				<button ion-item menuClose (click)="categoryPage()">
+					<img src="assets/imgs/ic_categories.png">
+					{{'categories' | translate}}
+				</button>
+				<button *ngIf="user" ion-item menuClose (click)="myOrders()">
+					<img src="assets/imgs/ic_my_orders-2.png">
+					{{'my_orders' | translate}}
+				</button>
+				<button ion-item menuClose (click)="wishlistPage()">
+					<img src="assets/imgs/fav.png">
+					{{'my_wishes' | translate}}
+				</button>
+				<button ion-item menuClose (click)="helpPage('faq')">
+					<img src="assets/imgs/ic_help.png">
+					{{'faq' | translate}}
+				</button>
+				<button ion-item menuClose (click)="helpPage('terms')">
+					<img src="assets/imgs/ic_about.png">
+					{{'about' | translate}}
+				</button>
+				<button ion-item menuClose (click)="chatUs()">
+					<img src="assets/imgs/ic_message.png ">
+					{{'contact_us' | translate}}
+				</button>
+				<button ion-item menuClose (click)="manageLanguage()">
+					<img src="assets/imgs/ic_menu_color.png">
+					{{'change_language' | translate}}
+				</button>
+				<button ion-item menuClose (click)="phonenumberPage()">
+					<img src="assets/imgs/ic_logout.png">
+					<span *ngIf="user">{{'logout' |translate}}</span>
+					<span *ngIf="!user">{{'login' |translate}}</span>
+				</button>
+			</ion-list>
+		</div>
+	</ion-content>
+	<ion-footer *ngIf="config.demoMode">
+		<ion-item menuClose (click)="developedBy()" no-lines>
+			<div class="div-logo">
+				<h4 class="text-white-dev">{{'developed_by' | translate}}</h4>
+				<img class="img-logo" src="assets/imgs/VT_black_logo.png" alt="">
+			</div>
+		</ion-item>
+	  </ion-footer>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" [class]="deviceModel" #content swipeBackEnabled="false" type="overlay"></ion-nav>

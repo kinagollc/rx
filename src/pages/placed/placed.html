@@ -1,0 +1,27 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<img src="assets/imgs/ic_menu.png">
+		</button>
+		<ion-title>{{"order_placed" | translate}} </ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div class="img-box">
+		<img src="assets/imgs/order-placed.jpg">
+	</div>
+	<h3 class="text-sky" text-center [innerHTML]="'u_order_placed' | translate"></h3>
+	<!--	<h4 class="" text-center>{{"order_success" | translate}}.<br>{{"p_visit" | translate}} <strong (click)="ordersPage()" class="text-black">{{"my_orders" | translate}}</strong> {{"page2check" | translate}}<br> {{"the_progress" | translate}}</h4>-->
+	<div class="btn-padding btn-fisx-bottom ">
+
+	</div>
+</ion-content>
+<ion-footer no-border>
+	<button ion-button full class="bg-green btn-round  bg-thime  btn-text" (click)="myorder_2()">
+		{{"my_orders" | translate}}
+	</button>
+	<button ion-button full class="bg-green btn-round bg-white bg-white btn-text" (click)="homePage()">
+		{{"continue_shopping" | translate}}
+	</button>
+</ion-footer>

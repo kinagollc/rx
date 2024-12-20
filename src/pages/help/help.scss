@@ -1,0 +1,46 @@
+page-help {
+    .toolbar-title-md {
+        span {
+            top: 0px;
+        }
+    }
+    h6 {
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        color: lighten($black-color, 40%) ;
+        padding-left: 15px;
+    }
+    .heading {
+        color: $light-color;
+        font-size: 1.5rem;
+    }
+    .logo {
+        width: 260px;
+        margin: auto;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+    p {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: $black-color;
+        line-height: 1.5;
+    }
+    .conditions {
+        border-top: 5px solid $bg-light;
+        p {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+    }
+    h2 {
+        padding: 20px 0;
+        margin-bottom: 0;
+        font-size: 1.7rem;
+        font-weight: 500;
+        color: $black-color;
+    }
+}

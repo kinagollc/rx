@@ -1,0 +1,7 @@
+{
+  "name": "medizone",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,49 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>{{"my_orders" | translate}}
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+
+	<div class="empty_placeholder" *ngIf="!loadingShown && (!orders || !orders.length)">
+		<img src="assets/imgs/no_orders.png">
+		<p>{{"empty_orders" | translate}}</p>
+	</div>
+
+	<ion-list no-lines>
+		<ion-item *ngFor="let order of orders">
+			<h2 class="d-flex">{{"order_id" | translate}} - {{order.id}}
+				<span class="end">{{order.status | translate}}</span>
+			</h2>
+			<ion-row>
+				<ion-col col-3>
+					<h4>{{"ordered_on" | translate}}</h4>
+					<h3>{{order.date_created}}</h3>
+				</ion-col>
+
+				<ion-col col-3>
+				</ion-col>
+
+				<ion-col col-3>
+					<button
+						*ngIf="order.status == 'on-hold' || order.status == 'pending'|| order.status == 'processing'"
+						ion-button full class=" cencel btn-round  bg-thime  btn-text"
+						(click)="confirmCancelOrder(order)">
+						{{"cancel_order" | translate}}
+					</button>
+				</ion-col>
+
+				<ion-col col-3>
+					<button ion-button full class="btn-round  bg-thime  btn-text" (click)="orderInfo(order)">
+						{{"order_info2" | translate}}
+					</button>
+				</ion-col>
+			</ion-row>
+		</ion-item>
+	</ion-list>
+</ion-content>

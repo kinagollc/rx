@@ -1,0 +1,45 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			<p>{{config.appName}}</p>
+			<span class="end" (click)="homePage()">{{"skip" | translate}}</span>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div class="form bg-white" padding-left padding-right>
+		<p text-center padding-bottom margin-bottom>{{"Sign in to" | translate}} {{config.appName}}</p>
+		<ion-list>
+			<ion-item>
+				<ion-label>{{'address_country' | translate}}</ion-label>
+				<ion-select [(ngModel)]="countryCode" placeholder="{{'select' | translate}}" multiple="false">
+					<ion-option [value]="country.callingCodes[0]" *ngFor="let country of countries">{{country.name}}
+					</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>{{"phone" | translate}}</ion-label>
+				<ion-input type="tel" text-end placeholder="{{'phone2' | translate}}" [(ngModel)]="credentials.username">
+				</ion-input>
+				<p text-center>{{"nocode" | translate}}</p>
+			</ion-item>
+			<ion-item>
+				<ion-label>{{"password" | translate}}</ion-label>
+				<ion-input type="password" text-end placeholder="{{'password' | translate}}"
+					[(ngModel)]="credentials.password">
+				</ion-input>
+			</ion-item>
+		</ion-list>
+		<button ion-button full class="bg-thime btn-round btn-text" (click)="signIn()">
+			{{"continue" | translate}}
+		</button>
+		<!-- <br> -->
+		<!-- <p text-center [innerHTML]="authError" style="margin-bottom:35px"></p> -->
+		<p text-center (click)="passwordPage()" style="margin-bottom:35px; color: #ce134c;">
+			{{"forgot_password" | translate}}
+		</p>
+	</div>
+	<div class="btn-fisx-bottom">
+	</div>
+</ion-content>

@@ -1,0 +1,40 @@
+page-upload_prescription {
+	.container {
+		.img_box {
+			margin-top: 50px;
+			margin-bottom: 41px;
+
+			ion-icon {
+				color: #80c31f;
+				border: 1.5px solid #80c31f;
+				border-radius: 50%;
+				font-size: 8rem;
+				width: 155px;
+				height: 155px;
+				line-height: 150px;
+			}
+		}
+
+		h1 {
+			margin: 0;
+			color: lighten($dark-text, 10%);
+			font-size: 1.9rem;
+			font-weight: 700;
+			margin-bottom: 30px;
+		}
+
+		p {
+			margin: 0;
+			color: lighten($dark-text, 10%);
+			font-weight: 600;
+			font-size: 1.44rem;
+		}
+	}
+	.footer{
+		padding: 30px;
+		padding-top: 0;
+		.btn-text{
+			margin: 0;
+		}
+	}
+}

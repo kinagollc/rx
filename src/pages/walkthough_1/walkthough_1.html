@@ -1,0 +1,69 @@
+<ion-content [fullscreen]="true">
+	<ion-slides loop="true" pager #slides>
+		<ion-slide>
+			<div class="container" text-center>
+				<div class="img_box">
+					<img src="assets/imgs/vector_smart_object1.png">
+				</div>
+				<h2 text-center>{{'discover' | translate}}</h2>
+				<p>{{'explor_medicines_available' | translate}}<br>{{'around_you' | translate}}</p>
+
+				<ion-row>
+					<ion-col col-4 text-start (click)="home()">
+						<h3>{{'skip' | translate}}</h3>
+					</ion-col>
+					<ion-col col-4 text-center>
+					</ion-col>
+					<ion-col col-4 text-end (click)="next()">
+						<h3>{{'next' | translate}}</h3>
+					</ion-col>
+				</ion-row>
+			</div>
+		</ion-slide>
+
+		<ion-slide>
+			<div class="container" text-center>
+				<div class="img_box">
+					<img src="assets/imgs/vector_smart_object3.png">
+				</div>
+				<h2 text-center>{{'payment_options' | translate}}</h2>
+				<p>{{'choose_the_preferred_payment' | translate}}<br>{{'options_available' | translate}}</p>
+
+				<ion-row>
+					<ion-col col-4 text-start (click)="home()">
+						<h3>{{'skip' | translate}}</h3>
+					</ion-col>
+					<ion-col col-4 text-center>
+					</ion-col>
+					<ion-col col-4 text-end (click)="next()">
+						<h3>{{'next' | translate}}</h3>
+					</ion-col>
+				</ion-row>
+			</div>
+		</ion-slide>
+
+
+		<ion-slide>
+			<div class="container" text-center>
+				<div class="img_box">
+					<img src="assets/imgs/vector_smart_object2.png">
+				</div>
+				<h2 text-center>{{'enjoy_your_shopping' | translate}}</h2>
+				<p>{{'get_genuine_medicines_for' | translate}}<br>{{'the_lowest_price' | translate}}</p>
+
+				<ion-row>
+					<ion-col col-4 text-start>
+						<!--						<h3>{{'skip' | translate}}</h3>-->
+					</ion-col>
+
+					<ion-col col-4 text-center>
+					</ion-col>
+					<ion-col col-4 text-end (click)="home()">
+						<!--						<h3>{{'next' | translate}}</h3>-->
+						<h4>{{'continue' | translate}}</h4>
+					</ion-col>
+				</ion-row>
+			</div>
+		</ion-slide>
+	</ion-slides>
+</ion-content>

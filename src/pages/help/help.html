@@ -1,0 +1,21 @@
+<ion-header class="bg-thime">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <img src="assets/imgs/ic_menu.png">
+        </button>
+        <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+    <!-- <ion-searchbar (ionInput)="getItems($event)" (click)="searchPage()"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+          {{ item }}
+      </ion-item>
+    </ion-list> -->
+</ion-header>
+
+<ion-content>
+    <div padding>
+        <!-- <p class="heading">{{"faq" | translate}}</p> -->
+        <p [innerHTML]="toShow"></p>
+    </div>
+</ion-content>

@@ -1,0 +1,66 @@
+<ion-header class="bg-thime">
+	<ion-navbar>
+		<button ion-button menuToggle style="display: block !important;">
+			<img src="assets/imgs/ic_menu.png">
+		</button>
+		<ion-title>
+			<span class="center_title">{{config.appName}}</span>
+
+			<div class="icon-box end" (click)="cartPage()">
+				<img src="assets/imgs/ic_my_cart.png">
+				<ion-badge>{{cartTotal}}</ion-badge>
+			</div>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+	<ion-slides autoplay="2000" loop="true" pager *ngIf="banners && banners.length" dir="rtl">
+		<ion-slide *ngFor="let slide of banners">
+			<img [src]="slide.img_src" class="slide-image" (click)="categoryIdPage(slide.category)" />
+		</ion-slide>
+	</ion-slides>
+	<div class="product">
+		<ion-toolbar no-border-top class="tab-bar">
+			<ion-searchbar (ionInput)="getItems($event)" placeholder="{{'search_box' | translate}}"
+				(click)="searchPage()"></ion-searchbar>
+			<ion-list>
+				<ion-item *ngFor="let item of items">
+				</ion-item>
+			</ion-list>
+		</ion-toolbar>
+		<div [ngSwitch]="products">
+			<div class="bg-white" style="padding-top: 10px;">
+				<ion-row class="d-flex">
+					<ion-col col-4><img src="assets/imgs/vector1.png"></ion-col>
+					<ion-col col-8>
+						<h6 class="text-sky">{{"upload_title" | translate}}</h6>
+					</ion-col>
+					<ion-col col-8>
+						<ol>
+							<li>{{"upload_option1" | translate}}</li>
+							<li>{{"upload_option2" | translate}}</li>
+							<li>{{"upload_option3" | translate}}</li>
+						</ol>
+					</ion-col>
+					<ion-col col-4><img src="assets/imgs/vector2.png"></ion-col>
+				</ion-row>
+				<div padding style="padding-top: 0;">
+					<button ion-button full class="bg-thime btn-round btn-text" (click)="uploadPage()">
+						{{"upload_button" | translate}}
+					</button>
+					<p text-center no-margin>Or</p>
+					<button ion-button block outline class="btn-round btn-text" (click)="categoryPage()">
+						{{"button_browse" | translate}}
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</ion-content>
+<div *ngIf="config.demoMode" class="buy-this-app-class">
+    <button ion-button class="button-size" (click)="buyThisApp()" round>
+      <ion-icon name="md-cart" class="text-white"></ion-icon> &nbsp;
+      {{'buy_this_app' | translate}}
+    </button>
+  </div>

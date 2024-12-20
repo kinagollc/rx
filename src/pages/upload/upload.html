@@ -1,0 +1,46 @@
+<ion-content class="bg-light" padding>
+	<ion-card>
+		<img src="assets/imgs/uplod-img.png" />
+		<ion-icon name="md-close" class="close-icon" (click)="dismiss()"></ion-icon>
+		<ion-card-content>
+			<ion-card-title text-center>
+				{{message}}
+			</ion-card-title>
+			<ion-row class="d-flex">
+				<ion-col col-6>
+					<button ion-button full class="bg-thime btn-round btn-text btn-shadow" (click)="pickCamera()">
+						<span *ngIf="cameraUploads.length == 0">{{"camera" | translate}}</span>
+						<span *ngIf="cameraUploads.length > 0">Add more</span>
+					</button>
+				</ion-col>
+				<ion-col col-6>
+					<button ion-button block outline class="btn-round btn-text btn-shadow" (click)="editphoto()">
+						<span *ngIf="galleryUploads.length == 0">{{"gallery" | translate}}</span> 
+						<span *ngIf="galleryUploads.length > 0">Add more</span>
+						<input id="pres-image" style="display: none" (change)="changeFileListener($event)" type="file">
+					</button>
+				</ion-col>
+				<ion-row *ngIf="cameraUploads.length > 0" class="d-flex">
+					<ion-col *ngFor="let cu of cameraUploads" col-3>
+						<img width="70" [src]="cu.base64Image">
+					</ion-col>
+				</ion-row>
+				<ion-col *ngIf="cameraUploads.length > 0" col-12>
+					<button ion-button full class="bg-thime btn-round btn-text btn-shadow" (click)="uploadPickCameraImages()">
+						{{"Upload camera images" | translate}}
+					</button>
+				</ion-col>
+				<ion-row *ngIf="galleryUploads.length > 0" class="d-flex">
+					<ion-col *ngFor="let gu of galleryUploads" col-3>
+						<img width="70" [src]="gu">
+					</ion-col>
+				</ion-row>
+				<ion-col *ngIf="galleryUploads.length > 0" col-12>
+					<button ion-button full class="bg-thime btn-round btn-text btn-shadow" (click)="uploadSelectedImages()">
+						{{"Upload selected images" | translate}}
+					</button>
+				</ion-col>
+			</ion-row>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

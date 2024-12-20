@@ -1,0 +1,263 @@
+page-payment {
+  .form {
+    padding: 0 5px;
+
+    .item-select {
+      .select-text {
+        font-size: 1.3rem !important;
+        font-weight: 500 !important;
+      }
+    }
+
+    .mr-5 {
+      margin-right: 5px;
+    }
+
+    .select {
+      padding: 12px 8px 12px 16px !important;
+    }
+
+    .select-wp {
+      margin: 0;
+      border: none;
+    }
+
+    ion-col {
+      padding: 0 !important;
+    }
+
+    .d-flex {
+      display: flex;
+      align-items: center;
+      border: 1px solid lighten($black-color, 99%);
+      border-radius: 3px;
+      padding-right: 18px;
+      margin-bottom: 5px;
+
+      .item-inner {
+        border: none !important;
+        margin-bottom: 0px;
+      }
+
+      .calendar-icon {
+        display: block;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .card {
+    margin: 0 !important;
+    width: auto;
+    margin-bottom: 3px !important;
+    border-radius: 0px !important;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+
+    .card-content {
+      padding-top: 0;
+      padding-bottom: 0;
+
+      h6 {
+        margin: 18px 0;
+        display: flex;
+        align-items: center;
+        display: flex;
+        align-items: center;
+
+        ion-icon {
+          margin-right: 15px;
+        }
+      }
+    }
+
+    .item-toggle {
+      .item-inner {
+        border: none !important;
+      }
+    }
+
+    .toggle {
+      width: 33px !important;
+      height: 18px !important;
+    }
+
+    .toggle-checked {
+      .toggle-icon {
+        background: $theme-color !important;
+      }
+    }
+
+    .toggle-inner {
+      background: $white-color !important;
+      width: 15px !important;
+      height: 15px !important;
+      top: 1px;
+    }
+
+    .toggle-ios .toggle-inner {
+      left: -3px;
+    }
+
+    .toggle-wp .toggle-icon {
+      border: none;
+      background: lighten($black-color, 95%);
+
+      .toggle-inner {
+        left: -5px;
+      }
+    }
+  }
+
+  .heading {
+    font-size: 1.2rem;
+    border-bottom: 1px Solid #ccc;
+    color: $gray-color;
+    font-weight: 500;
+    padding: 12px 25px;
+  }
+
+  .item {
+    padding: 0 8px;
+
+    .radio {
+      &[item-start] {
+        margin: 0;
+        margin-right: 23px;
+      }
+    }
+
+    .item-inner {
+      padding: 0 !important;
+
+      .label {
+        margin: 0;
+        font-weight: 500;
+        font-size: 1.2rem;
+        color: $black-color;
+      }
+
+      .input-wrapper {
+        padding: 0;
+      }
+    }
+  }
+
+  .btn-padding {
+    padding: 0 10px;
+
+    .btn-round {
+      border-radius: 5px !important;
+
+      img {
+        width: 8px;
+        margin: 0 5px;
+        margin-top: -2px;
+      }
+    }
+  }
+
+  .spacebar {
+    height: 48px;
+    display: block;
+  }
+
+  .status {
+    padding: 8px 10px 8px 10px;
+    font-size: 1rem;
+
+    ion-icon {
+      font-size: 1.5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: block;
+      margin: auto;
+      margin-bottom: 0.7rem;
+    }
+
+    .col {
+      position: relative;
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        top: 11px;
+        left: 0;
+        width: 50%;
+        height: 1px;
+        background: lighten($text-grey, 20%);
+        z-index: -1;
+      }
+
+      &::after {
+        left: unset;
+        right: 0;
+      }
+
+      &:first-child {
+        &::before {
+          display: none;
+        }
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
+      span {
+        color: lighten($text-grey, 0%);
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: 0.7px;
+      }
+
+      ion-icon {
+        position: relative;
+        font-size: 1.6rem;
+        background: $bg-light;
+        color: lighten($text-grey, 20%);
+        margin-bottom: 10px;
+      }
+
+      &.complate {
+        ion-icon {
+          color: $theme-color;
+        }
+
+        &::after {
+          background: $theme-color;
+        }
+
+        &:before {
+          background: $theme-color;
+        }
+      }
+
+      &.processing {
+        &:before {
+          background: $theme-color;
+        }
+
+        span {
+          color: darken($text-grey, 100%);
+          font-weight: 500;
+          font-size: 1.1rem;
+        }
+
+        ion-icon {
+          color: $theme-color;
+        }
+      }
+    }
+  }
+
+  .radio-checked {
+    border-color: $theme-color !important;
+  }
+
+  .radio-inner {
+    background: $theme-color !important;
+  }
+}

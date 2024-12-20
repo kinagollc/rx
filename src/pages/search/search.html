@@ -1,0 +1,68 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>{{ 'home_search_title' | translate }}
+			<div class="icon-box" (click)="cartPage()">
+				<img src="assets/imgs/ic_my_cart.png">
+				<ion-badge>{{cartTotal}}</ion-badge>
+			</div>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+	<div class="d-flex searchbar-section">
+		<ion-searchbar (ionInput)="getItems($event)" placeholder="{{'search_box' | translate}}" autofocus></ion-searchbar>
+	</div>
+
+	<div class="recent-search">
+		<ion-card *ngIf="queryHistory && queryHistory.length">
+			<ion-card-header>
+				{{"searches_recent" | translate}}
+				<span text-end class="right" (click)="clearHistory()">{{ 'clear_history' | translate }}</span>
+			</ion-card-header>
+			<ion-card-content>
+				<p *ngFor="let query of queryHistory" (click)="search(query)">
+					<ion-icon name="ios-time-outline"></ion-icon>{{query}}
+				</p>
+			</ion-card-content>
+		</ion-card>
+	</div>
+
+	<div class="trending-search">
+		<p *ngIf="query && query.length" class="small" padding-left padding-right>{{ 'search_for' | translate}} {{query}}</p>
+
+<!--
+		<div class="empty_placeholder">
+			<img src="assets/imgs/no_results.png">
+			<p>{{"no_favorites_added" | translate}}</p>
+		</div>
+-->
+		
+		<ion-list>
+			<ion-row *ngFor="let products of productsAll">
+				<ion-col col-6 *ngFor="let pro of products">
+					<ion-card>
+						<ion-card-header>
+							<div *ngIf="pro.images && pro.images.length" class="img-box" (click)="itemdetailPage(pro)">
+								<img data-src="{{pro.images[0].src}}">
+							</div>
+							<div *ngIf="pro.images == null || pro.images.length == 0" class="img-box" (click)="itemdetailPage(pro)">
+								<img src="assets/imgs/suit_PNG8132.png">
+							</div>
+							<ion-icon *ngIf="pro.favorite" name="md-heart" class="text-sky icon" (click)="toggleFavorite(pro)"></ion-icon>
+							<ion-icon *ngIf="!pro.favorite" name="md-heart-outline" class="text-light icon" (click)="toggleFavorite(pro)"></ion-icon>
+							<h5 (click)="itemdetailPage(pro)">{{pro.name}}</h5>
+						</ion-card-header>
+
+						<ion-card-content>
+							<div *ngIf="pro.type =='simple'" class="btn text-white" (click)="addToCart(pro)">{{ 'add_to_cart' | translate }}</div>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+			</ion-row>
+		</ion-list>
+		<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+			<ion-infinite-scroll-content></ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+	</div>
+</ion-content>

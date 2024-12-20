@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "747934766850",
+    "firebase_url": "https://rx-customer-new-default-rtdb.firebaseio.com",
+    "project_id": "rx-customer-new",
+    "storage_bucket": "rx-customer-new.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747934766850:android:2e5ef157463448d70a541b",
+        "android_client_info": {
+          "package_name": "com.rxstat.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747934766850-ikgkpd04pbml8pofj4kgra80em4uibpj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2VlnB15a0R6nefKAl1e32IW-TKkljAkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747934766850-ikgkpd04pbml8pofj4kgra80em4uibpj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "747934766850-obc7semj0fml1nmsjhs02b894ro8112i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rxstat.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

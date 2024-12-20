@@ -1,0 +1,58 @@
+<ion-footer no-border>
+	<ion-icon name="md-close" text-end class="close_btn" (click)="cancel()"></ion-icon>
+	<div class="form">
+		<ion-list no-lines>
+			<h3>{{"select_address_type" | translate}}</h3>
+			<ion-row class="radio_group" radio-group [(ngModel)]="address.type">
+				<ion-col col-4>
+					<ion-item>
+						<ion-label>
+							<div class="img_box">
+								<img src="assets/imgs/ic_home_active.png">
+								<img src="assets/imgs/ic_home_active.png">
+							</div>
+							<h2>{{"address_type_home" | translate}}</h2>
+						</ion-label>
+						<ion-radio value="1"></ion-radio>
+					</ion-item>
+				</ion-col>
+				<ion-col col-4>
+					<ion-item>
+						<ion-label>
+							<div class="img_box">
+								<img src="assets/imgs/ic_office_active.png">
+								<img src="assets/imgs/ic_office_active.png">
+							</div>
+							<h2>{{"address_type_office" | translate}}</h2>
+						</ion-label>
+						<ion-radio value="2"></ion-radio>
+					</ion-item>
+				</ion-col>
+				<ion-col col-4>
+					<ion-item>
+						<ion-label>
+							<div class="img_box">
+								<img src="assets/imgs/ic_location_active.png">
+								<img src="assets/imgs/ic_location_active.png">
+							</div>
+							<h2>{{"address_type_other" | translate}}</h2>
+						</ion-label>
+						<ion-radio value="3"></ion-radio>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-item>
+				<ion-label>{{"address_postal" | translate}}</ion-label>
+				<ion-input type="text" [(ngModel)]="address.postcode"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>{{"full_address" | translate}}</ion-label>
+				<ion-input type="text" [(ngModel)]="address.address_1"></ion-input>
+			</ion-item>
+		</ion-list>
+
+	</div>
+	<button ion-button full no-margin class="btn-orange btn" (click)="save()">
+		{{"save" | translate}}
+	</button>
+</ion-footer>

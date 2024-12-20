@@ -1,0 +1,54 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon class="menu-icon">
+				<img src="assets/imgs/ic_menu.png">
+			</ion-icon>
+		</button>
+		<ion-title>{{'my_address' | translate}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-light">
+	<div class="address-section">
+		<p *ngIf="select" text-center>
+			{{'my_address_heading_select' | translate}}
+		</p>
+		<p *ngIf="!select" text-center>
+			{{'my_address_heading_edit' | translate}}
+		</p>
+
+		<div class="empty-view" *ngIf="!addresses || !addresses.length">
+			<div style="text-align:center">
+				<img src="assets/imgs/ic_home.png" alt="no offers" />
+				<span style="color:#9E9E9E; font-weight:bold;">{{'address_empty' | translate}}</span>
+			</div>
+		</div>
+
+		<ion-list no-lines>
+			<ion-item *ngFor="let address of addresses" (click)="addressEditSelect(address)">
+				<ion-label>
+					<div class="img_box">
+						<img *ngIf="address.type == 1" src="assets/imgs/ic_home_active.png">
+						<img *ngIf="address.type == 1" src="assets/imgs/ic_home_active.png">
+						<h3 *ngIf="address.type == 1">{{"address_type_home" | translate}}</h3>
+						<img *ngIf="address.type == 2" src="assets/imgs/ic_office_active.png">
+						<img *ngIf="address.type == 2" src="assets/imgs/ic_office_active.png">
+						<h3 *ngIf="address.type == 2">{{"address_type_office" | translate}}</h3>
+						<img *ngIf="address.type == 3" src="assets/imgs/ic_location_active.png">
+						<img *ngIf="address.type == 3" src="assets/imgs/ic_location_active.png">
+						<h3 *ngIf="address.type == 3">{{"address_type_other" | translate}}</h3>
+					</div>
+					<p>{{address.address_1}}</p>
+				</ion-label>
+				<!-- <ion-radio value="{{address.id}}"></ion-radio> -->
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>
+<ion-footer no-border>
+	<button ion-button block outline (click)="addressNew()" class="add_new_location">
+		<ion-icon name="md-add" icon-start></ion-icon>
+		{{'my_address_add_new' | translate}}
+	</button>
+</ion-footer>

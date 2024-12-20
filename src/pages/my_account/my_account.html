@@ -1,0 +1,95 @@
+<ion-header class="bg-thime">
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<img src="assets/imgs/ic_menu.png">
+		</button>
+		<ion-title>{{"my_account" | translate}}
+		</ion-title>
+	</ion-navbar>
+	<!-- <ion-list padding-left>
+    <ion-item padding-left padding-right>
+      <ion-avatar item-start>
+        <img src="assets/imgs/profile_pix.png">
+      </ion-avatar>
+      <h2 class="">{{user.first_name}} {{user.last_name}}
+        <small class=""> Edit profile</small>
+      </h2>
+      <p class="text-white">{{user.username}} </p>
+    </ion-item>
+  </ion-list> -->
+	<ion-toolbar no-border-top class="tab-bar">
+		<ion-segment [(ngModel)]="account">
+			<ion-segment-button value="profile">
+				{{"profile" | translate}}
+			</ion-segment-button>
+			<!-- <ion-segment-button value="card">
+          My Cards
+      </ion-segment-button> -->
+			<ion-segment-button value="address">
+				{{"my_address" | translate}}
+			</ion-segment-button>
+		</ion-segment>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-light">
+	<div [ngSwitch]="account">
+		<div *ngSwitchCase="'profile'" class="profile-section">
+			<ion-list no-lines>
+				<ion-item>
+					<div class="text_box">
+						<p>{{ 'address_first_name' | translate }}</p>
+						<h2>{{user.first_name}}</h2>
+					</div>
+				</ion-item>
+				<ion-item>
+					<div class="text_box">
+						<p>{{ 'phone' | translate }}</p>
+						<h2>+{{user.username}}</h2>
+					</div>
+				</ion-item>
+				<ion-item>
+					<div class="text_box">
+						<p>{{ 'email' | translate }}</p>
+						<h2>{{user.email}}</h2>
+					</div>
+				</ion-item>
+			</ion-list>
+		</div>
+
+		<div *ngSwitchCase="'address'" class="address-section bg-light">
+			<div class="empty-view" *ngIf="!addresses || !addresses.length">
+				<div style="text-align:center">
+					<img src="assets/imgs/ic_home.png" alt="no offers" />
+					<span style="color:#9E9E9E; font-weight:bold;">{{'address_empty' | translate}}</span>
+				</div>
+			</div>
+
+			<ion-list no-lines>
+				<ion-item *ngFor="let address of addresses" (click)="addressPage(address)">
+					<ion-label>
+						<div class="img_box">
+							<img *ngIf="address.type == 1" src="assets/imgs/ic_home_active.png">
+							<img *ngIf="address.type == 1" src="assets/imgs/ic_home_active.png">
+							<h3 *ngIf="address.type == 1">{{"address_type_home" | translate}}</h3>
+							<img *ngIf="address.type == 2" src="assets/imgs/ic_office_active.png">
+							<img *ngIf="address.type == 2" src="assets/imgs/ic_office_active.png">
+							<h3 *ngIf="address.type == 2">{{"address_type_office" | translate}}</h3>
+							<img *ngIf="address.type == 3" src="assets/imgs/ic_location_active.png">
+							<img *ngIf="address.type == 3" src="assets/imgs/ic_location_active.png">
+							<h3 *ngIf="address.type == 3">{{"address_type_other" | translate}}</h3>
+						</div>
+						<p>{{address.address_1}}</p>
+					</ion-label>
+					<!-- <ion-radio value="{{address.id}}"></ion-radio> -->
+				</ion-item>
+			</ion-list>
+		</div>
+	</div>
+</ion-content>
+<ion-footer no-border>
+	<button *ngIf="account == 'address'" ion-button block outline (click)="addressPage(null)" class="add_new_location">
+		<ion-icon name="md-add" icon-start></ion-icon>
+		{{'my_address_add_new' | translate}}
+	</button>
+</ion-footer>
